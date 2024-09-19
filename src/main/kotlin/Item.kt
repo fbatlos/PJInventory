@@ -1,5 +1,5 @@
 package org.example
 
 interface Item {
-    fun Apply(player:Character)
+    fun Apply(player:Character):Int
 }

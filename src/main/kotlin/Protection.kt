@@ -1,7 +1,7 @@
 package org.example
 
-class Protection(name:String,Armor:Int):Item {
-    override fun Apply(player: Character) {
+class Protection(val name:String,val Armor:Int):Item {
+    override fun Apply(player: Character):Int {
         TODO("Not yet implemented")
     }
 }

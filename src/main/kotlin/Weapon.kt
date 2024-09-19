@@ -1,7 +1,7 @@
 package org.example
 
-class Weapon(name:String,Damege:Int):Item {
-    override fun Apply(player: Character) {
-        TODO("Not yet implemented")
+class Weapon(val name:String,val Damege:Int):Item {
+    override fun Apply(player: Character): Int {
+        return Damege
     }
 }
