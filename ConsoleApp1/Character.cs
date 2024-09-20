@@ -11,7 +11,7 @@ public class Character(string name, int MaxHitPoints, int BaseDamage,int BaseArm
         }
         else
         {
-            return BaseArmor + (DamegeAllItem(_inventory)/10);
+            return BaseDamage + (DamegeAllItem(_inventory)/10);
         }
     }
     //
@@ -29,19 +29,40 @@ public class Character(string name, int MaxHitPoints, int BaseDamage,int BaseArm
         return totalDamege;
     }
 
-    void Defend()
+    int Defend()
     {
-        
+        if (_inventory.Count == 0)
+        {
+            return BaseArmor;
+        }
+        else
+        {
+            return BaseArmor + ArmorAllItem(_inventory);
+        }
     }
+    int ArmorAllItem(List<IItem> _inventory)
+    {
+        int totalArmor = 0;
+        foreach (var protection in _inventory)
+        {
+            if (protection is Protection)
+            {
+                totalArmor += protection.Apply(this);
+            }
+        }
 
+        return totalArmor;
+    }
     void Heal(int amount)
     {
         
     }
 
-    void ReceiveDamage(int damage)
+    public int ReceiveDamage(int damage)
     {
+        MaxHitPoints -= damage - (Defend()/10);
         
+        return damage - (Defend()/10);
     }
     
 }

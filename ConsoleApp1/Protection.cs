@@ -4,6 +4,6 @@ public class Protection(String name, int armor):IItem
 {
     public int Apply(Character character)
     {
-        throw new NotImplementedException();
+        return armor;
     }
 }
